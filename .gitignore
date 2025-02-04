@@ -1,0 +1,11 @@
+__pycache__
+*.egg-info
+.vscode
+wandb
+Merge
+asy_results
+recraft_results
+example*
+flux_train_network_*
+flux_train_recraft_*
+flux_train_utils_*
