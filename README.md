@@ -32,24 +32,25 @@ pip install --upgrade -r requirements.txt
 ```
 
 ## Asymmetric LoRA
-### 1. **Weights**
-    To be released.
-### 2. **Train**
-    To be released.
-### 3. **Inference**
-    To be released.
+### 1. Weights
+To be released.
+### 2. Train
+To be released.
+### 3. Inference
+To be released.
 
 
 ## Recraft Model
-### 1. **Weights**
-    To be released.
-### 2. **Train**
-    To be released.
-### 3. **Inference**
-    To be released.
+### 1. Weights
+To be released.
+### 2. Train
+To be released.
+### 3. Inference
+To be released.
 
 ## Datasets
-    To be released.
+To be released.
+<img src='./images/Dataset.png' width='100%' />
 
 ## Results
 ### Text-to-Sequence Generation (LoRA & Asymmetric LoRA)
