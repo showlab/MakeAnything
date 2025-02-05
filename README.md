@@ -14,7 +14,7 @@
 
 <br>
 
-<img src='./demo/teaser.png' width='100%' />
+<img src='./images/teaser.png' width='100%' />
 
 
 ## Quick Start
@@ -38,6 +38,7 @@ pip install --upgrade -r requirements.txt
 2. **Train**
     To be released.
 3. **Inference**
+    To be released.
 
 
 ### Recraft Model
@@ -49,7 +50,11 @@ pip install --upgrade -r requirements.txt
     To be released.
 
 ## Results
-<!-- ### T2I (LoRA & Asymmetric LoRA) -->
-<img src='./demo/T2I.png' width='100%' />
+### Text-to-Sequence Generation (LoRA & Asymmetric LoRA)
+<img src='./images/t2i.png' width='100%' />
 
-<!-- ### I2I (Recraft Model) -->
+### Image-to-Sequence Generation (Recraft Model)
+<img src='./images/i2i.png' width='100%' />
+
+### Generalization on Unseen Domains
+<img src='./images/oneshot.png' width='100%' />
