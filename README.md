@@ -17,36 +17,38 @@
 <img src='./images/teaser.png' width='100%' />
 
 
-## Quick Start
-### Configuration
-1. **Environment setup**
+## Configuration
+### 1. **Environment setup**
 ```bash
 git clone https://github.com/showlab/MakeAnything.git
-cd MakeAnything
 conda create -n makeanything python=3.11.10
 conda activate makeanything
 ```
-2. **Requirements installation**
+### 2. **Requirements installation**
 ```bash
+cd MakeAnything
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 pip install --upgrade -r requirements.txt
 ```
 
-### Asymmetric LoRA
-1. **Weights**
+## Asymmetric LoRA
+### 1. **Weights**
     To be released.
-2. **Train**
+### 2. **Train**
     To be released.
-3. **Inference**
+### 3. **Inference**
     To be released.
 
 
-### Recraft Model
-1. **Weights**
+## Recraft Model
+### 1. **Weights**
     To be released.
-2. **Train**
+### 2. **Train**
     To be released.
-3. **Inference**
+### 3. **Inference**
+    To be released.
+
+## Datasets
     To be released.
 
 ## Results
