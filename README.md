@@ -14,4 +14,42 @@
 
 <br>
 
-<img src='./demo/teaserf.png' width='100%' />
+<img src='./demo/teaser.png' width='100%' />
+
+
+## Quick Start
+### Configuration
+1. **Environment setup**
+```bash
+git clone https://github.com/showlab/MakeAnything.git
+cd MakeAnything
+conda create -n makeanything python=3.11.10
+conda activate makeanything
+```
+2. **Requirements installation**
+```bash
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+pip install --upgrade -r requirements.txt
+```
+
+### Asymmetric LoRA
+1. **Weighs**
+    To be released.
+2. **Train**
+    To be released.
+3. **Inference**
+
+
+### Recraft Model
+1. **Weighs**
+    To be released.
+2. **Train**
+    To be released.
+3. **Inference**
+    To be released.
+
+## Results
+<!-- ### T2I (LoRA & Asymmetric LoRA) -->
+<img src='./demo/T2I.png' width='100%' />
+
+<!-- ### I2I (Recraft Model) -->
