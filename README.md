@@ -33,7 +33,7 @@ pip install --upgrade -r requirements.txt
 ```
 
 ### Asymmetric LoRA
-1. **Weighs**
+1. **Weights**
     To be released.
 2. **Train**
     To be released.
@@ -41,7 +41,7 @@ pip install --upgrade -r requirements.txt
 
 
 ### Recraft Model
-1. **Weighs**
+1. **Weights**
     To be released.
 2. **Train**
     To be released.
