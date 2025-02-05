@@ -5,7 +5,7 @@ wandb
 Merge
 asy_results
 recraft_results
+drop
 example*
 flux_train_network_*
-flux_train_recraft_*
-flux_train_utils_*
+flux_train_recraft*

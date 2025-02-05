@@ -19,9 +19,10 @@ AE_PATH="path/to/vae.safetensors"
 
 sample_images_path="path/to/sample_images.txt"
 sample_prompts_path="path/to/sample_prompts.txt"
+frame_num=9   # 4 or 9
 
 accelerate launch --config_file="path/to/accelerate_config.yaml" \
-  --main_process_port=23322 --mixed_precision=bf16 --num_cpu_threads_per_process=1 flux_train_recraft_9f.py \
+  --main_process_port=23322 --mixed_precision=bf16 --num_cpu_threads_per_process=1 flux_train_recraft.py \
   --pretrained_model_name_or_path=$CKPT_PATH \
   --clip_l=$CLIP_L_PATH \
   --t5xxl=$T5XXL_PATH \
@@ -46,4 +47,5 @@ accelerate launch --config_file="path/to/accelerate_config.yaml" \
   --sample_every_n_steps 300 \
   --sample_at_first \
   --sample_images $sample_images_path \
-  --sample_prompts $sample_prompts_path
+  --sample_prompts $sample_prompts_path \
+  --frame_num $frame_num
