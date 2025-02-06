@@ -19,7 +19,7 @@ AE_PATH="path/to/vae.safetensors"
 
 sample_images_path="path/to/sample_images.txt"
 sample_prompts_path="path/to/sample_prompts.txt"
-frame_num=9   # 4 or 9
+frame_num=9   # 4 for 1024 or 9 for 1056
 
 accelerate launch --config_file="path/to/accelerate_config.yaml" \
   --main_process_port=23322 --mixed_precision=bf16 --num_cpu_threads_per_process=1 flux_train_recraft.py \
