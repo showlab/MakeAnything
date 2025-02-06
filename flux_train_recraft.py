@@ -17,6 +17,7 @@ import train_network
 from library.utils import setup_logging
 from diffusers.utils import load_image
 import numpy as np
+from PIL import Image, ImageOps
 
 setup_logging()
 import logging
@@ -24,6 +25,31 @@ import logging
 logger = logging.getLogger(__name__)
 
 # NUM_SPLIT = 2
+
+class ResizeWithPadding:
+    def __init__(self, size, fill=255):
+        self.size = size
+        self.fill = fill
+
+    def __call__(self, img):
+        if isinstance(img, np.ndarray):
+            img = Image.fromarray(img)
+        elif not isinstance(img, Image.Image):
+            raise TypeError("Input must be a PIL Image or a NumPy array")
+
+        width, height = img.size
+
+        if width == height:
+            img = img.resize((self.size, self.size), Image.BICUBIC)
+        else:
+            max_dim = max(width, height)
+
+            new_img = Image.new("RGB", (max_dim, max_dim), (self.fill, self.fill, self.fill))
+            new_img.paste(img, ((max_dim - width) // 2, (max_dim - height) // 2))
+
+            img = new_img.resize((self.size, self.size), Image.BICUBIC)
+
+        return img
 
 class FluxNetworkTrainer(train_network.NetworkTrainer):
     def __init__(self):
@@ -254,7 +280,10 @@ class FluxNetworkTrainer(train_network.NetworkTrainer):
             if args.sample_images is not None:
                 logger.info(f"cache conditions for sample images: {args.sample_images}")
                 
+                # lc03lc
+                resize_transform = ResizeWithPadding(size=512, fill=255) if args.frame_num == 4 else ResizeWithPadding(size=352, fill=255)
                 img_transforms = transforms.Compose([
+                    resize_transform,
                     transforms.ToTensor(),
                     transforms.Normalize([0.5], [0.5]),
                 ])
@@ -276,11 +305,12 @@ class FluxNetworkTrainer(train_network.NetworkTrainer):
                             logger.info(f"cache conditions for image: {image} with prompt: {prompt}")
                             image = img_transforms(np.array(load_image(image), dtype=np.uint8)).unsqueeze(0).to(vae.device, dtype=vae.dtype)
                             latents = self.encode_images_to_latents2(args, accelerator, vae, image)
-                            # yiren gai
-                            if args.frame_num == 4:
-                                conditions[prompt] = latents[:,:,2*latents.shape[2]//3:latents.shape[2], 2*latents.shape[3]//3:latents.shape[3]].to("cpu")
-                            else:
-                                conditions[prompt] = latents[:,:,latents.shape[2]//2:latents.shape[2], :latents.shape[3]//2].to("cpu")
+                            # lc03lc
+                            conditions[prompt] = latents
+                            # if args.frame_num == 4:
+                            #     conditions[prompt] = latents[:,:,2*latents.shape[2]//3:latents.shape[2], 2*latents.shape[3]//3:latents.shape[3]].to("cpu")
+                            # else:
+                            #     conditions[prompt] = latents[:,:,latents.shape[2]//2:latents.shape[2], :latents.shape[3]//2].to("cpu")
                 
                 self.sample_conditions = conditions
 
