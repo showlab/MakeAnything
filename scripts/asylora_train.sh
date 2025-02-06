@@ -1,12 +1,17 @@
 #!/bin/bash
 
+CKPT_PATH="/path/to/unet/flux1-dev.safetensors"
+CLIP_L_PATH="/path/to/clip/clip_l.safetensors"
+T5XXL_PATH="/path/to/clip/t5xxl_fp16.safetensors"
+AE_PATH="/path/to/vae/ae.safetensors"
+
 dataset_config="/path/to/your/dataset/config.toml" 
 output_dir="/path/to/output/directory"
 output_name="Model_Name"
-sample_prompts="/path/to/sample_prompts.txt"
 
-# Number of B matrices used in asymmetric LoRA.
 lora_ups_num=10
+network_dim=64
+max_train_steps=50000
 
 accelerate launch \
   --config_file "/path/to/accelerate/config.yaml" \
@@ -14,10 +19,10 @@ accelerate launch \
   --gpu_ids 1 \
   flux_train_network_asylora.py \
   --dataset_config $dataset_config \
-  --pretrained_model_name_or_path "/path/to/unet/flux1-dev.safetensors" \
-  --ae "/path/to/vae/ae.safetensors" \
-  --clip_l "/path/to/clip/clip_l.safetensors" \
-  --t5xxl "/path/to/clip/t5xxl.safetensors" \
+  --pretrained_model_name_or_path $CKPT_PATH \
+  --ae $AE_PATH \
+  --clip_l $CLIP_L_PATH \
+  --t5xxl $T5XXL_PATH \
   --optimizer_type came \
   --max_grad_norm 1.0 \
   --lr_scheduler constant \
@@ -27,10 +32,10 @@ accelerate launch \
   --min_snr_gamma 5 \
   --output_name $output_name \
   --output_dir $output_dir \
-  --network_dim 64 \
+  --network_dim $network_dim \
   --network_alpha 1.0 \
   --learning_rate 1e-4 \
-  --max_train_steps 50000 \
+  --max_train_steps $max_train_steps \
   --apply_t5_attn_mask \
   --cache_latents_to_disk \
   --cache_text_encoder_outputs \
@@ -47,9 +52,6 @@ accelerate launch \
   --fp8_base \
   --highvram \
   --gradient_checkpointing \
-  --sample_prompts $sample_prompts \
-  --sample_sampler="ddim" \
-  --sample_every_n_steps 5000 \
   --seed 42 \
   --save_precision bf16 \
   --save_every_n_epochs 5 \

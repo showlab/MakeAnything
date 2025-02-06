@@ -57,7 +57,7 @@ dataset/
 ├── lego_001.caption
 ```
 
-The `.caption` files contain a **single line** of text that serves as a prompt for generating the corresponding image. The prompt must specify the index of the lora_up used for that particular training sample in the Asymmetric LoRA. The format for this is `--lora_up <index>`, where `<index>` refers to the domain index used in the training, and should **start from 1**, not 0. 
+The `.caption` files contain a **single line** of text that serves as a prompt for generating the corresponding image. The prompt **must specify the index of the lora_up** used for that particular training sample in the Asymmetric LoRA. The format for this is `--lora_up <index>`, where `<index>` is the current B matrice index in the Asymmetric LoRA, refers to the certain domain used in the training, and index should **start from 1**, not 0. 
 
 For example, a .caption file for a portrait painting sequence might look as follows:
 
@@ -84,10 +84,22 @@ batch_size = 1
 It is recommended to set batch size to 1 and set resolution to 1024 (4-frames) or 1056 (9-frames).
 
 #### 2.2 Start training
-To be released.
+We have provided a template file for training Asymmetric LoRA in `scripts/asylora_train.sh`. Simply replace corresponding paths with yours to start the training. Note that `lora_ups_num` in the script is the total number of B matrices used in Asymmetric LoRA that you specified during training.
+
+```bash
+chmod +x scripts/asylora_train.sh
+scripts/asylora_train.sh
+```
+
+Additionally, if you are directly **using our dataset for training**, the `.caption` files in our released dataset do not specify the `--lora_up <index>` field. You will need to organize and update the `.caption` files to include the appropriate `--lora_up <index>` values before starting the training.
 
 ### 3. Inference
-To be released.
+We have also provided a template file for inference Asymmetric LoRA in `scripts/asylora_inference.sh`. Once the training is done, replace file paths and run inference. Note that `lora_up_cur` in the script is the current number of B matrice index to be used for inference.
+
+```bash
+chmod +x scripts/asylora_inference.sh
+scripts/asylora_train.sh
+```
 
 
 ## Recraft Model

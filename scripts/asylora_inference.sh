@@ -7,10 +7,7 @@ AE_PATH="/path/to/vae/ae.safetensors"
 LORA_PATH="/path/to/asylora/asylora.safetensors"
 OUTPUT_DIR="/path/to/output/directory"
 
-
-# Number of B matrices used in asymmetric LoRA.
 lora_ups_num=10
-# The current B matrix index to be used. Specify the matrix index you want to apply.
 lora_up_cur=8
 
 PROMPT="YOUR_PROMPT"
