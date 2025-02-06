@@ -6,6 +6,5 @@ Merge
 asy_results
 recraft_results
 drop
+SplitAsy
 example*
-flux_train_network_*
-flux_train_recraft*
