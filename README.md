@@ -12,6 +12,7 @@
 
 <a href="https://arxiv.org/abs/2502.01572"><img src="https://img.shields.io/badge/ariXv-2411.15098-A42C25.svg" alt="arXiv"></a>
 <a href="https://huggingface.co/showlab/makeanything"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace"></a>
+<a href="https://huggingface.co/datasets/showlab/makeanything/"><img src="https://img.shields.io/badge/🤗_HuggingFace-Dataset-ffbd45.svg" alt="HuggingFace"></a>
 
 <br>
 
@@ -118,7 +119,7 @@ You can download the trained checkpoints of Recraft Model for inference. Below a
 #### 2.1 Obtain standard LoRA
 During the second phase of training the image-to-sequence generation with the Recraft model, we need to apply a **standard LoRA architecture** to be merged to flux.1 before performing the Recraft training. Therefore, the first step is to decompose the Asymmetric LoRA into the original LoRA format. 
 
-To achieve this, **train a standard LoRA directly**(optional method below) or we have provided a script template in `scripts/asylora_split.sh` for **splitting the Asymmetric LoRA**. The script allows you to extract the required B matrices from the Asymmetric LoRA model. Specifically, the `LORA_UP` in the script specifies the index of the B matrices you wish to extract for use as the original LoRA.
+To achieve this, **train a standard LoRA directly** (optional method below) or we have provided a script template in `scripts/asylora_split.sh` for **splitting the Asymmetric LoRA**. The script allows you to extract the required B matrices from the Asymmetric LoRA model. Specifically, the `LORA_UP` in the script specifies the index of the B matrices you wish to extract for use as the original LoRA.
 
 ```bash
 chmod +x scripts/asylora_split.sh
@@ -192,9 +193,30 @@ scripts/asylora_train.sh
 ```
 
 ## Datasets
-To be released.
+
+We have uploaded our datasets on [Hugging Face](https://huggingface.co/datasets/showlab/makeanything/). The datasets includes both 4-frame and 9-frame sequence images, covering a total of 21 domains of procedural sequences. For MakeAnything training, each domain consists of **50 sequences**, with resolutions of either **1024 (4-frame)** or **1056 (9-frame)**. Additionally, we provide an extensive collection of SVG datasets and Sketch datasets for further research and experimentation.
+
+Note that the arrangement of **9-frame sequences follows an S-shape pattern**, whereas **4-frame sequences follow a ɔ-shape pattern**.
+
+<details>
+  <summary>Click to preview the datasets</summary>
 <br>
-<img src='./images/Dataset.png' width='100%' />
+
+| Domain | Preview | Quantity | Domain | Preview | Quantity |
+|:--------:|:---------:|:----------:|:--------:|:---------:|:----------:|
+| LEGO | ![LEGO Preview](./images/datasets/lego.png) | 50 | Cook | ![Cook Preview](./images/datasets/cook.png) | 50 |
+| Painting | ![Painting Preview](./images/datasets/painting.png) | 50 | Icon | ![Icon Preview](./images/datasets/icon.png) | 50+1.4k |
+| Landscape Illustration | ![Landscape Illustration Preview](./images/datasets/landscape.png) | 50 | Portrait | ![Portrait Preview](./images/datasets/portrait.png) | 50+2k |
+| Transformer | ![Transformer Preview](./images/datasets/transformer.png) | 50 | Sand Art | ![Sand Art Preview](./images/datasets/sandart.png) | 50 |
+| Illustration | ![Illustration Preview](./images/datasets/illustration.png) | 50 | Sketch | ![Sketch Preview](./images/datasets/sketch.png) | 50+9k |
+| Clay Toys | ![Clay Toys Preview](./images/datasets/claytoys.png) | 50 | Clay Sculpture | ![Clay Sculpture Preview](./images/datasets/claysculpture.png) | 50 |
+| ZBrush Modeling | ![ZBrush Modeling Preview](./images/datasets/zbrush.png) | 50 | Wood Sculpture | ![Wood Sculpture Preview](./images/datasets/woodsculpture.png) | 50 |
+| Ink Painting | ![Ink Painting Preview](./images/datasets/inkpainting.png) | 50 | Pencil Sketch | ![Pencil Sketch Preview](./images/datasets/pencilsketch.png) | 50 |
+| Fabric Toys | ![Fabric Toys Preview](./images/datasets/fabrictoys.png) | 50 | Oil Painting | ![Oil Painting Preview](./images/datasets/oilpainting.png) | 50 |
+| Jade Carving | ![Jade Carving Preview](./images/datasets/jadecarving.png) | 50 | Line Draw | ![Line Draw Preview](./images/datasets/linedraw.png) | 50 |
+| Emoji | ![Emoji Preview](./images/datasets/emoji.png) | 50+12k | | | |
+
+</details>
 
 ## Results
 ### Text-to-Sequence Generation (LoRA & Asymmetric LoRA)
