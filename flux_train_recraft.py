@@ -40,14 +40,14 @@ class ResizeWithPadding:
         width, height = img.size
 
         if width == height:
-            img = img.resize((self.size, self.size), Image.BICUBIC)
+            img = img.resize((self.size, self.size), Image.LANCZOS)
         else:
             max_dim = max(width, height)
 
             new_img = Image.new("RGB", (max_dim, max_dim), (self.fill, self.fill, self.fill))
             new_img.paste(img, ((max_dim - width) // 2, (max_dim - height) // 2))
 
-            img = new_img.resize((self.size, self.size), Image.BICUBIC)
+            img = new_img.resize((self.size, self.size), Image.LANCZOS)
 
         return img
 
