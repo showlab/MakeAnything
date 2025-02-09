@@ -11,6 +11,7 @@
 > <br>
 
 <a href="https://arxiv.org/abs/2502.01572"><img src="https://img.shields.io/badge/ariXv-2411.15098-A42C25.svg" alt="arXiv"></a>
+<a href="https://huggingface.co/spaces/yiren98/MakeAnything"><img src="https://img.shields.io/badge/🤗_HuggingFace-Space-ffbd45.svg" alt="HuggingFace"></a>
 <a href="https://huggingface.co/showlab/makeanything"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace"></a>
 <a href="https://huggingface.co/datasets/showlab/makeanything/"><img src="https://img.shields.io/badge/🤗_HuggingFace-Dataset-ffbd45.svg" alt="HuggingFace"></a>
 
@@ -19,8 +20,11 @@
 <img src='./images/teaser.png' width='100%' />
 
 
-## Configuration
-### 1. **Environment setup**
+## Quick Start
+### Gradio app
+To run the Gradio app for Recraft Model on [HuggingFace Space](https://huggingface.co/spaces/yiren98/MakeAnything).
+### Configuration
+#### 1. **Environment setup**
 ```bash
 git clone https://github.com/showlab/MakeAnything.git
 cd MakeAnything
@@ -28,7 +32,7 @@ cd MakeAnything
 conda create -n makeanything python=3.11.10
 conda activate makeanything
 ```
-### 2. **Requirements installation**
+#### 2. **Requirements installation**
 ```bash
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 pip install --upgrade -r requirements.txt
