@@ -185,16 +185,16 @@ image_2_prompt_content
 We have provided a template file for training Recraft Model in `scripts/recraft_train.sh`. Simply replace corresponding paths with yours to start the training. Note that `frame_num` in the script must be `4` (for 1024 resolution) or `9` (for 1056 resolution).
 
 ```bash
-chmod +x scripts/asylora_train.sh
-scripts/asylora_train.sh
+chmod +x scripts/recraft_train.sh
+scripts/recraft_train.sh
 ```
 
 ### 3. Inference
 We have also provided a template file for inference Recraft Model in `scripts/recraft_inference.sh`. Once the training is done, replace file paths, fill in your prompt and run inference.
 
 ```bash
-chmod +x scripts/asylora_inference.sh
-scripts/asylora_train.sh
+chmod +x scripts/recraft_inference.sh
+scripts/recraft_inference.sh
 ```
 
 ## Datasets
