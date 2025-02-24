@@ -38,7 +38,7 @@ accelerate launch --config_file="path/to/accelerate_config.yaml" \
   --train_batch_size=$BATCH_SIZE --max_data_loader_n_workers=2 --persistent_data_loader_workers --mixed_precision=bf16 --fp8_base \
   --mem_eff_attn --sdpa --gradient_checkpointing --gradient_accumulation_steps=1 \
   --seed=42 --clip_skip=2 --noise_offset=0.0375 --loss_type=l2 --adaptive_noise_scale=0.0375 \
-  --learning_rate=1 --unet_lr=1 --text_encoder_lr=1 \
+  --learning_rate=2e-6 --unet_lr=2e-6 --text_encoder_lr=2e-6 \
   --optimizer_type=Prodigy --optimizer_args "weight_decay=0.01" "betas=.9,.99" "decouple=True" "use_bias_correction=True" "d_coef=0.5" "d0=1e-4" \
   --lr_scheduler=cosine_with_restarts --lr_scheduler_num_cycles=1 --lr_decay_steps=160 --lr_scheduler_min_lr_ratio=0.1 \
   --network_module=networks.lora_flux --network_dim=$LORA_RANK --network_alpha=$LORA_RANK --network_train_unet_only \
