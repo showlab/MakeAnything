@@ -613,7 +613,11 @@ class FluxNetworkTrainer(train_network.NetworkTrainer):
         num_split = 2 if args.frame_num == 4 else 3
         # target[:, :, :, :w//num_split] = model_pred[:, :, :, :w//num_split]
         # target[:, :, :, :w//num_split] = model_pred[:, :, :, :w//num_split]
-        target[:, :, 2*h//num_split:h, 2*w//num_split:w] = model_pred[:, :, 2*h//num_split:h, 2*w//num_split:w]
+        # target[:, :, 2*h//num_split:h, 2*w//num_split:w] = model_pred[:, :, 2*h//num_split:h, 2*w//num_split:w]
+        if args.frame_num == 9:
+            target[:, :, 2*h//3:h, 2*w//3:w] = model_pred[:, :, 2*h//3:h, 2*w//3:w]
+        else:
+            target[:, :, 1*h//2:h, 1*w//2:w] = model_pred[:, :, 1*h//2:h, 1*w//2:w]
         
 
         return model_pred, target, timesteps, None, weighting
